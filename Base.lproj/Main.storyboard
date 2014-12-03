@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Maps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XaT-ND-zID">
+                                <rect key="frame" x="16" y="119" width="568" height="434"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="434" id="Wzk-N2-BkS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Wzk-N2-BkS"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mq8-Vh-eER"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.32134834253110522" blue="0.34420708750018203" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XaT-ND-zID" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5rp-vs-QAi"/>
+                            <constraint firstAttribute="centerY" secondItem="XaT-ND-zID" secondAttribute="centerY" constant="-36" id="8hA-Aa-1tw"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="XaT-ND-zID" secondAttribute="bottom" constant="47" id="JBp-aa-L8h"/>
+                            <constraint firstAttribute="centerX" secondItem="XaT-ND-zID" secondAttribute="centerX" id="JcV-aw-sTv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myMap" destination="XaT-ND-zID" id="T9U-Mw-CJO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79" y="326"/>
+        </scene>
+    </scenes>
+</document>
