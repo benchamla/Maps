@@ -39,6 +39,6 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Because I need to know where you are </string>
 	<key>NSLocationWhenInUsageDescription</key>
-	<string></string>
+	<string>Because blablabla</string>
 </dict>
 </plist>

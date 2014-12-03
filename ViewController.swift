@@ -13,21 +13,28 @@ import CoreLocation
 
 // to get location don't forget to go in supportingfiles/Info.plest and clic on the little "+". then add "NSLocationWhenInUseUsageDescription".
 
-class ViewController: UIViewController, MKMapViewDelegate   {
-
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
+{
+    
+    var manager = CLLocationManager()
     @IBOutlet weak var myMap: MKMapView!
    
-    @IBOutlet weak var TitleTextField: UITextField!
-    @IBOutlet weak var CommentTextField: UITextField!
-    @IBOutlet weak var TitleLabel: UILabel!
-    
-    @IBOutlet weak var CommentLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        // core location
+        
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
         //37.777472, -122.417185
+
       
         var latitude: CLLocationDegrees = 37.777472
         var longitude: CLLocationDegrees = -122.417185
@@ -74,6 +81,30 @@ class ViewController: UIViewController, MKMapViewDelegate   {
         
     }
 
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var userLocation: CLLocation = locations[0] as CLLocation
+     
+        
+        var latitude: CLLocationDegrees = userLocation.coordinate.latitude
+        var longitude: CLLocationDegrees = userLocation.coordinate.longitude
+        var latDelta: CLLocationDegrees = 0.01
+        var longDelta: CLLocationDegrees = 0.01
+        
+        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        var span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        
+        var region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        myMap.setRegion(region, animated: true)
+
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println(error)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
